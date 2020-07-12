@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>AUD[I]DE Online Coding Application</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+  
+  <style>
+  .fakeimg {
+    height: 200px;
+    background: #aaa;
+  }
+  #myNavbar #li-dropdown span {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  </style>
+  
+</head>
+<body>
+
+
+<nav class="navbar navbar-dark bg-dark justify-content-between">
+    <a class="navbar-brand">AUDI-IDE</a>
+    <form class="form-inline">
+      <div style="padding-right: 20px;">
+      <select class="custom-select" id="programminglangdropdown" >
+        <option selected>Choose Language</option>
+      </select>
+    </div>
+
+      <button class="btn btn-outline-success my-2 my-sm-0" type="button" id="runSourceCode">Run</button>
+    </form>
+  </nav>
+
+<div class="container">
+  <div class="row">
+    
+    <div class="col-sm-6">
+      <br>
+      
+      <!-- Example single danger button -->
+      <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tab">
+          <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
+        </div>
+      </nav>
+      <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+            <div class="form-group">
+                <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="20" style="resize: none;"></textarea>
+            </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-sm-6">
+        <br>
+      
+        <!-- Example single danger button -->
+        <nav>
+          <div class="nav nav-tabs" id="nav-tab" role="tab">
+            <a class="nav-item nav-link active" id="nav-stdout-tab" data-toggle="tab" href="#nav-stdout" role="tab" aria-controls="nav-stdout" aria-selected="true">stdout</a>
+            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">stderr</a>
+            <a class="nav-item nav-link" id="nav-sbmessage-tab" data-toggle="tab" href="#nav-sbmessage" role="tab" aria-controls="nav-sbmessage" aria-selected="false">SandBox Message</a>
+          </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="nav-stdout" role="tabpanel" aria-labelledby="nav-stdout-tab">
+
+          </div>
+          <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">DICKSON</div>
+          <div class="tab-pane fade" id="nav-sbmessage" role="tabpanel" aria-labelledby="nav-sbmessage-tab">Message</div>
+
+        </div>
+
+        <br>
+      
+    
+
+      </div>
+  </div>
+</div>
+
+<script >
+
+  var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://judge0.p.rapidapi.com/languages",
+    "method": "GET",
+    "headers": {
+      "x-rapidapi-host": "judge0.p.rapidapi.com",
+      "x-rapidapi-key": "c9455d7d45msh64dbc3d6785988cp12a630jsn90cc6b5a7a35"
+    }
+  }
+
+$.ajax(settings).done(function (response) {
+
+  for (i in response) {
+    if(response[i].id == '43' || response[i].id == '68') {
+      console.log(response[i].id + ' - ' + response[i].name);
+      $('#programminglangdropdown').append($('<option>').val(response[i].id).text(response[i].name));
+    }
+  }
+
+});
+
+$('#programminglangdropdown').on('change', function (e) {
+    var optionSelected = $("option:selected", this);
+    var valueSelected = this.value;
+    console.log(valueSelected);
+    
+    switch(valueSelected){
+      case '43':
+      $('#exampleFormControlTextarea1').html(plainTextDefault);
+        break;
+      case '68':
+        $('#exampleFormControlTextarea1').html(phpdefault);
+        break;
+        
+
+    }
+});
+
+$('#runSourceCode').on('click', function(e) {
+  
+
+    var valueSelected = $('#programminglangdropdown option:selected').val();
+
+      //console.log(valueSelected);
+
+    var datajson = {
+    "language_id" : valueSelected,
+    "source_code": $('#exampleFormControlTextarea1').val()
+    }
+    //console.log(JSON.stringify(datajson));
+    var settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://judge0.p.rapidapi.com/submissions",
+    "method": "POST",
+    "headers": {
+      "x-rapidapi-host": "judge0.p.rapidapi.com",
+      "x-rapidapi-key": "c9455d7d45msh64dbc3d6785988cp12a630jsn90cc6b5a7a35",
+      "content-type": "application/json",
+      "accept": "application/json"
+    },
+    "processData": false,
+    "data": JSON.stringify(datajson)
+    }
+
+    $.ajax(settings).done(function (submissionResponse) {
+      console.log(submissionResponse);
+
+      getSubmissionResult(submissionResponse);
+      
+      
+    });
+
+
+});
+
+function getSubmissionResult(submissionResponse) {
+
+  var resultInProcess = false;
+  //while (resultInProcess == false) {
+
+    var settingsOne = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://judge0.p.rapidapi.com/submissions/"+ submissionResponse.token,
+        "method": "GET",
+        "headers": {
+          "x-rapidapi-host": "judge0.p.rapidapi.com",
+          "x-rapidapi-key": "c9455d7d45msh64dbc3d6785988cp12a630jsn90cc6b5a7a35"
+        }
+      }
+
+    $.ajax(settingsOne).done(function (submissionResultResponse) {
+      console.log(submissionResultResponse);
+      $('#nav-stdout').html(submissionResultResponse.status.description);
+      //$('#nav-stdout').html(submissionResultResponse.stdout);
+          $('#nav-sbmessage').html(submissionResultResponse.message);
+      
+          
+        
+          if(submissionResultResponse.status.id != '1' || submissionResultResponse.status.id != '2') {
+            
+            //if( submissionResultResponse.stderr == null) {
+              $('#nav-stdout').html(submissionResultResponse.stdout);
+              $('#nav-sbmessage').html(submissionResultResponse.message);
+            //}
+            resultInProcess = true;
+          }
+    });
+  //}
+}
+
+var plainTextDefault = "hello, world\n";
+
+var phpdefault = "\
+<?php\n\
+print(\"hello, world\\n\");\n\
+?>\n\
+";
+
+</script>
+</body>
+</html>
