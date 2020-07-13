@@ -10,5 +10,6 @@ This is an Integrated Development Environment(IDE) which is coded with Document 
 - The Output section comprises a standard output, standard error, compile output whether it is successful or unsuccessful and a sandbox message.
 ## URL
 https://audide.s3.ap-south-1.amazonaws.com/ide.html
-## Output IDE
-https://github.com/Audithan/ide/blob/master/ide%20output.png
+
+
+
