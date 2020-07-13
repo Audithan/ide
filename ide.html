@@ -7,23 +7,11 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
-  
-  <style>
-  .fakeimg {
-    height: 200px;
-    background: #aaa;
-  }
-  #myNavbar #li-dropdown span {
-    padding-top: 15px;
-    padding-bottom: 15px;
-  }
-  </style>
   
 </head>
-<body>
+<body style="background-color:rgb(35, 36, 37) !important;">
 
-
+<!--Top Navigation Starts Here -->
 <nav class="navbar navbar-dark bg-dark justify-content-between">
     <a class="navbar-brand">AUDI-IDE</a>
     <form class="form-inline">
@@ -32,184 +20,256 @@
         <option selected>Choose Language</option>
       </select>
     </div>
-
       <button class="btn btn-outline-success my-2 my-sm-0" type="button" id="runSourceCode">Run</button>
     </form>
   </nav>
 
-<div class="container">
+  <!--Top Navigation Ends Here -->
+
+<div class="container" style="background-color: currentColor;">
   <div class="row">
-    
-    <div class="col-sm-6">
+
+    <!--Editor Section-->
+    <div class="col-sm-5">
       <br>
-      
-      <!-- Example single danger button -->
       <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tab">
-          <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
+          <a class="nav-item nav-link active" id="nav-editor-tab" data-toggle="tab" href="#nav-editor" role="tab" aria-controls="nav-editor" aria-selected="true">Editor</a>
         </div>
       </nav>
       <div class="tab-content" id="nav-tabContent">
-        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+        <div class="tab-pane fade show active" id="nav-editor" role="tabpanel" aria-labelledby="nav-editor-tab">
             <div class="form-group">
-                <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="20" style="resize: none;"></textarea>
+                <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="20" style="resize: none;border: none;"></textarea>
             </div>
         </div>
       </div>
 
     </div>
+    <!--Editor Section Starts Here-->
 
-    <div class="col-sm-6">
-        <br>
+    <!--Output Section Starts Here-->
+    <div class="col-sm-7">
+      <br>
+        
+      <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tab">
+          <a class="nav-item nav-link active" id="nav-stdin-tab" data-toggle="tab" href="#nav-stdin" role="tab" aria-controls="nav-stdin" aria-selected="true">STDIN</a>
+        </div>
+      </nav>
       
-        <!-- Example single danger button -->
+      <div class="tab-content" id="nav-tabContent" >
+        <div class="tab-pane fade show active" id="nav-stdin" role="tabpanel" aria-labelledby="nav-stdin-tab">
+          <textarea class="form-control rounded-0" id="stdin-textarea" rows="10" style="resize: none;border: none;"></textarea>
+        </div>
+      </div>
+
+        <br>
+        
         <nav>
           <div class="nav nav-tabs" id="nav-tab" role="tab">
-            <a class="nav-item nav-link active" id="nav-stdout-tab" data-toggle="tab" href="#nav-stdout" role="tab" aria-controls="nav-stdout" aria-selected="true">stdout</a>
-            <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">stderr</a>
-            <a class="nav-item nav-link" id="nav-sbmessage-tab" data-toggle="tab" href="#nav-sbmessage" role="tab" aria-controls="nav-sbmessage" aria-selected="false">SandBox Message</a>
+            <a class="nav-item nav-link active" id="nav-stdout-tab" data-toggle="tab" href="#nav-stdout" role="tab" aria-controls="nav-stdout" aria-selected="true">STDOUT</a>
+            <a class="nav-item nav-link" id="nav-stderr-tab" data-toggle="tab" href="#nav-stderr" role="tab" aria-controls="nav-stderr" aria-selected="false">STDERR</a>
+            <a class="nav-item nav-link" id="nav-comperr-tab" data-toggle="tab" href="#nav-comperr" role="tab" aria-controls="nav-comperr" aria-selected="false">COMPILE OUTPUT</a>
+            <a class="nav-item nav-link" id="nav-sbmessage-tab" data-toggle="tab" href="#nav-sbmessage" role="tab" aria-controls="nav-sbmessage" aria-selected="false">SANDBOX MESSAGE</a>
           </div>
         </nav>
-        <div class="tab-content" id="nav-tabContent">
-          <div class="tab-pane fade show active" id="nav-stdout" role="tabpanel" aria-labelledby="nav-stdout-tab">
-
-          </div>
-          <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">DICKSON</div>
-          <div class="tab-pane fade" id="nav-sbmessage" role="tabpanel" aria-labelledby="nav-sbmessage-tab">Message</div>
-
+        
+        <div class="tab-content" id="nav-tabContent" style="color:aliceblue; padding-top: 10px;">
+          <div class="tab-pane fade show active" id="nav-stdout" role="tabpanel" aria-labelledby="nav-stdout-tab">STD output display here</div>
+          <div class="tab-pane fade" id="nav-stderr" role="tabpanel" aria-labelledby="nav-stderr-tab">Std Errors displays here</div>
+          <div class="tab-pane fade" id="nav-comperr" role="tabpanel" aria-labelledby="nav-comperr-tab">Compile Errors displays here</div>
+          <div class="tab-pane fade" id="nav-sbmessage" role="tabpanel" aria-labelledby="nav-sbmessage-tab">Standbox Message displays here</div>
         </div>
 
         <br>
-      
-    
-
       </div>
+      <!--Output Section Ends here-->
   </div>
 </div>
 
 <script >
 
-  var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "https://judge0.p.rapidapi.com/languages",
-    "method": "GET",
-    "headers": {
-      "x-rapidapi-host": "judge0.p.rapidapi.com",
-      "x-rapidapi-key": "c9455d7d45msh64dbc3d6785988cp12a630jsn90cc6b5a7a35"
-    }
+const RAPIDAPI_HOST = 'judge0.p.rapidapi.com';
+const RAPIDAPI_URL = 'https://'+ RAPIDAPI_HOST;
+const RAPIDAPI_KEY = '32fc9c7d6cmsh0aa8b6ec5da438ap10de80jsn43ba22b91bf1';
+
+var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": RAPIDAPI_URL,
+  "method": "GET",
+  "headers": {
+    "x-rapidapi-host": RAPIDAPI_HOST,
+    "x-rapidapi-key": RAPIDAPI_KEY
   }
+}
 
-$.ajax(settings).done(function (response) {
+var defaultSourceCode = {
+    52: "\
+#include <iostream>\n\
+\n\
+int main() {\n\
+    std::cout << \"hello, world\" << std::endl;\n\
+    return 0;\n\
+}\n\
+",
+    43: "hello, world\n",
+    48:  "\
+#include <stdio.h>\n\
+\n\
+int main(void) {\n\
+    printf(\"hello, world\\n\");\n\
+    return 0;\n\
+}\n\
+",
+    71: "print(\"hello, world\")"
 
-  for (i in response) {
-    if(response[i].id == '43' || response[i].id == '68') {
-      console.log(response[i].id + ' - ' + response[i].name);
-      $('#programminglangdropdown').append($('<option>').val(response[i].id).text(response[i].name));
-    }
-  }
+};
 
-});
+var fileNames = {
+    48: "main.c",
+    52: "main.cpp",
+    43: "text.txt",    
+    71: "script.py"
+};
+
+/*
+  OnChange events of the Programming Language DropDown
+*/
 
 $('#programminglangdropdown').on('change', function (e) {
     var optionSelected = $("option:selected", this);
     var valueSelected = this.value;
-    console.log(valueSelected);
+    //console.log(valueSelected);
+
+    //Paste the default Source Code to editor
+    $('#exampleFormControlTextarea1').html(defaultSourceCode[valueSelected]);
+
+    //TO DO
+    //Change the default source code on Change
     
-    switch(valueSelected){
-      case '43':
-      $('#exampleFormControlTextarea1').html(plainTextDefault);
-        break;
-      case '68':
-        $('#exampleFormControlTextarea1').html(phpdefault);
-        break;
-        
-
-    }
+    //Change the text of editor tab
+    $('#nav-editor-tab').html(fileNames[valueSelected]);
+    
+    //Change the text of editor tab
+    $('#nav-stdout').html('STD output displays here')
+    $('#nav-stderr').html('STD Error displays here')
+    $('#nav-sbmessage').html('Standbox message displays here')
 });
 
-$('#runSourceCode').on('click', function(e) {
+/*
+  Get List of programming language on the web page load
+*/
+
+//judge0 Language Endpoint
+//This Code runs on page load
+var languageApiSettings = settings;
+languageApiSettings['url'] = RAPIDAPI_URL + "/languages";
+
+$.ajax(languageApiSettings).done(function (response) {
+  for (i in response) {
+    //Filter the language, Plain Text, C, CPP, Python
+    if(response[i].id == '43' || response[i].id == '48'  || response[i].id == '71'  || response[i].id == '52') {
+      //Add the Option tag dynamically to the dropdown.
+      $('#programminglangdropdown').append($('<option>').val(response[i].id).text(response[i].name));
+    }
+  }
+});
+
+/*
+  Submit the Source Code and lang ID to the API
+  Happend OnClick of RUN button
+  Returns a Token of the submission
+*/
+$('#runSourceCode').on('click', function(e) {  
+
+  //Get the selected value from the Progam language Dropdown
+  var valueSelected = $('#programminglangdropdown option:selected').val();
   
-
-    var valueSelected = $('#programminglangdropdown option:selected').val();
-
-      //console.log(valueSelected);
-
-    var datajson = {
+  //Read the input fromt the editor
+  let stdin_val = $.trim($('#stdin-textarea').val());
+  // Store in a json object
+  var datajson = {
     "language_id" : valueSelected,
-    "source_code": $('#exampleFormControlTextarea1').val()
-    }
-    //console.log(JSON.stringify(datajson));
-    var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "https://judge0.p.rapidapi.com/submissions",
-    "method": "POST",
-    "headers": {
-      "x-rapidapi-host": "judge0.p.rapidapi.com",
-      "x-rapidapi-key": "c9455d7d45msh64dbc3d6785988cp12a630jsn90cc6b5a7a35",
-      "content-type": "application/json",
-      "accept": "application/json"
-    },
-    "processData": false,
-    "data": JSON.stringify(datajson)
-    }
+    "source_code": $.trim($('#exampleFormControlTextarea1').val()),
+    'base64_encoded': true
+  }
 
-    $.ajax(settings).done(function (submissionResponse) {
+  //Store and append the input value to the query request
+  if(stdin_val != '') {
+    datajson['stdin'] = stdin_val;
+  }
+
+  let submissionPromise = new Promise((resolve, reject) => {
+
+    $('#nav-stdout').html('Waiting for the output...');
+    //Prepare the Settings for the source code submission
+    var submissionApiSettings = settings;
+    submissionApiSettings['method'] = 'POST';
+    submissionApiSettings['url'] =  RAPIDAPI_URL + '/submissions';
+    console.log(submissionApiSettings['url']);
+    submissionApiSettings['headers']['content-type'] = 'application/json';
+    submissionApiSettings['headers']['accept'] = 'application/json';
+    submissionApiSettings['processData'] = false;
+    submissionApiSettings['data'] = JSON.stringify(datajson);
+
+    // Call the Source code submission API
+    $.ajax(submissionApiSettings).done(function (submissionResponse) {
       console.log(submissionResponse);
-
-      getSubmissionResult(submissionResponse);
-      
-      
+      resolve(submissionResponse);
+    })
+    .fail(function() {
+      $('#nav-stdout').html('Something went wrong, Try again.');
     });
 
+  }).then(function(submissionResponse) {
+
+    return new Promise((resolve, reject) => {
+
+      setTimeout(() => {
+        console.log("Hello! " + submissionResponse);
+        //Prepare the Settings for the submission output API
+        var submissionResultApiSettings = settings;
+        submissionResultApiSettings['method'] = 'GET';
+        submissionResultApiSettings['url'] =  RAPIDAPI_URL + '/submissions/'+ submissionResponse.token;
+        // Call output of the Source code submission API
+        $.ajax(submissionResultApiSettings).done(function (submissionResultResponse) {
+          console.log(submissionResultResponse);
+          resolve(submissionResultResponse);
+        })
+        .fail(function() {
+          $('#nav-stdout').html('Something went wrong, Try again.');
+        });
+      },3000);
+
+    });
+
+  }).then(function(submissionResultResponse) {
+      
+    console.log("Yay! " + submissionResultResponse) 
+      
+    if(submissionResultResponse.status.id != 1 && submissionResultResponse.status.id != 2) {
+      
+      //Display the Program output.
+      var strout = submissionResultResponse.stdout;
+      if(submissionResultResponse.status.id == 3) {
+        strout = strout.replace(/\n/ig, '<br>');
+      }
+      $('#nav-stdout').html(strout);
+
+      //Display the Sandbox Message.
+      if(submissionResultResponse.message) {
+        $('#nav-sbmessage').html(submissionResultResponse.message);
+      } 
+    }
+    else {
+      $('#nav-stdout').html('STD output displays here');
+    }
+
+  });
 
 });
-
-function getSubmissionResult(submissionResponse) {
-
-  var resultInProcess = false;
-  //while (resultInProcess == false) {
-
-    var settingsOne = {
-        "async": true,
-        "crossDomain": true,
-        "url": "https://judge0.p.rapidapi.com/submissions/"+ submissionResponse.token,
-        "method": "GET",
-        "headers": {
-          "x-rapidapi-host": "judge0.p.rapidapi.com",
-          "x-rapidapi-key": "c9455d7d45msh64dbc3d6785988cp12a630jsn90cc6b5a7a35"
-        }
-      }
-
-    $.ajax(settingsOne).done(function (submissionResultResponse) {
-      console.log(submissionResultResponse);
-      $('#nav-stdout').html(submissionResultResponse.status.description);
-      //$('#nav-stdout').html(submissionResultResponse.stdout);
-          $('#nav-sbmessage').html(submissionResultResponse.message);
-      
-          
-        
-          if(submissionResultResponse.status.id != '1' || submissionResultResponse.status.id != '2') {
-            
-            //if( submissionResultResponse.stderr == null) {
-              $('#nav-stdout').html(submissionResultResponse.stdout);
-              $('#nav-sbmessage').html(submissionResultResponse.message);
-            //}
-            resultInProcess = true;
-          }
-    });
-  //}
-}
-
-var plainTextDefault = "hello, world\n";
-
-var phpdefault = "\
-<?php\n\
-print(\"hello, world\\n\");\n\
-?>\n\
-";
-
 </script>
 </body>
 </html>
